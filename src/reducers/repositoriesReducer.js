@@ -36,6 +36,7 @@ export const repositoriesSlice = createSlice({
           }, []),
         ],
       };
+      localStorage.setItem('gitHubData', JSON.stringify(state.gitHubData));
     },
     removeCommentary: (state, action) => {
       state.gitHubData = {
@@ -44,7 +45,7 @@ export const repositoriesSlice = createSlice({
           ...state.gitHubData.items.reduce((acc, card) => {
             if (card.id === action.payload.id) {
               const filteredCommentaries = card.commentaries.filter(
-                (commentary) => commentary !== action.payload.commentary,
+                (commentary) => commentary !== action.payload.str,
               );
               card = {
                 ...card,
@@ -59,6 +60,7 @@ export const repositoriesSlice = createSlice({
           }, []),
         ],
       };
+      localStorage.setItem('gitHubData', JSON.stringify(state.gitHubData));
     },
     setItemsCount: (state, action) => {
       state.itemsCount = action.payload;

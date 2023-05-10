@@ -17,7 +17,7 @@ const CommentBlock = ({ cardId, commentaries }) => {
   };
 
   const handleRemoveComment = (event) => {
-    dispatch(removeCommentByName(event.target.dataset.value));
+    dispatch(removeCommentByName(cardId, event.target.dataset.value));
   };
 
   const handleInputChange = (value) => {
@@ -32,9 +32,10 @@ const CommentBlock = ({ cardId, commentaries }) => {
   const commentariesList =
     commentaries &&
     commentaries.map((comment, i) => (
-      <li data-value={comment} className={styles.comment} key={i}>
+      <li className={styles.comment} key={i}>
         {i + 1}. {comment}
         <Button
+          data-value={comment}
           variant="light"
           className={styles.removeButton}
           onClick={(event) => handleRemoveComment(event)}
