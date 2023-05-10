@@ -21,15 +21,3 @@ a:hover {
 input {
   box-shadow: none !important;
 }
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 34px 39px 0px 25px;
-  gap: 51px;
-}
-
-.empty {
-  margin: 0 auto;
-}

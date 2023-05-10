@@ -14,7 +14,7 @@ import { store } from './redux/store';
 import './index.css';
 import App from './App';
 import Home from './pages/Home';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/NotFound/NotFound';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

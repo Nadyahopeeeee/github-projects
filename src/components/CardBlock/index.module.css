@@ -1,0 +1,67 @@
+.project {
+  min-width: 440px;
+  background: #ffffff;
+  border: 1px solid #a2a3a4;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 13px 15.04px;
+  box-sizing: border-box;
+}
+
+.topContent {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 20px;
+  line-height: 23px;
+  margin-bottom: 18px;
+}
+
+.autor {
+  display: flex;
+  align-items: center;
+  gap: 26.47px;
+  margin-bottom: 13px;
+}
+
+.autorPhoto {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.autorName {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 37px;
+  margin-bottom: 15px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 18.87px;
+}
+
+.infoIcon {
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-width: 510px) {
+  .project {
+    width: 300px;
+  }
+
+  .title {
+    max-width: 200px;
+  }
+}

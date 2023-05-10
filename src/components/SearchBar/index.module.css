@@ -1,0 +1,15 @@
+.icon {
+  width: 51px;
+  height: 41px;
+  padding: 3px;
+}
+
+.form-control {
+  height: 62px;
+}
+
+.btn-search {
+  position: absolute;
+  right: 0;
+  z-index: 999;
+}
