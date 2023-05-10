@@ -19,47 +19,11 @@ export const repositoriesSlice = createSlice({
       localStorage.setItem('gitHubData', JSON.stringify(action.payload));
     },
     setCommentary: (state, action) => {
-      state.gitHubData = {
-        ...state.gitHubData,
-        items: [
-          ...state.gitHubData.items.reduce((acc, card) => {
-            if (card.id === action.payload.id) {
-              card = {
-                ...card,
-                commentaries: [...(card.commentaries || []), action.payload.inputValue],
-              };
-              acc.push(card);
-            } else {
-              acc.push(card);
-            }
-            return acc;
-          }, []),
-        ],
-      };
+      state.gitHubData = addOrDeleteComment(state, action, 'add');
       localStorage.setItem('gitHubData', JSON.stringify(state.gitHubData));
     },
     removeCommentary: (state, action) => {
-      state.gitHubData = {
-        ...state.gitHubData,
-        items: [
-          ...state.gitHubData.items.reduce((acc, card) => {
-            if (card.id === action.payload.id) {
-              const filteredCommentaries = card.commentaries.filter(
-                (commentary) => commentary !== action.payload.str,
-              );
-              card = {
-                ...card,
-                commentaries: filteredCommentaries,
-              };
-
-              acc.push(card);
-            } else {
-              acc.push(card);
-            }
-            return acc;
-          }, []),
-        ],
-      };
+      state.gitHubData = addOrDeleteComment(state, action, 'remove');
       localStorage.setItem('gitHubData', JSON.stringify(state.gitHubData));
     },
     setItemsCount: (state, action) => {
@@ -73,6 +37,36 @@ export const repositoriesSlice = createSlice({
     },
   },
 });
+
+function addOrDeleteComment(state, action, type) {
+  return {
+    ...state.gitHubData,
+    items: [
+      ...state.gitHubData.items.reduce((acc, card) => {
+        if (card.id === action.payload.id) {
+          if (type === 'add') {
+            card = {
+              ...card,
+              commentaries: [...(card.commentaries || []), action.payload.inputValue],
+            };
+          } else {
+            const filteredCommentaries = card.commentaries.filter(
+              (commentary) => commentary !== action.payload.str,
+            );
+            card = {
+              ...card,
+              commentaries: filteredCommentaries,
+            };
+          }
+          acc.push(card);
+        } else {
+          acc.push(card);
+        }
+        return acc;
+      }, []),
+    ],
+  };
+}
 
 export const {
   setRepositoryList,
