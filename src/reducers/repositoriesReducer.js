@@ -8,7 +8,6 @@ export const repositoriesSlice = createSlice({
     itemsCount: 10,
     pageCounts: 1,
     currentPage: 1,
-    selectedCard: null,
   },
   reducers: {
     setAppLoading: (state, action) => {

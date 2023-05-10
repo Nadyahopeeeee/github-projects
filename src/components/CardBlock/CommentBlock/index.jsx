@@ -14,10 +14,12 @@ const CommentBlock = ({ cardId, commentaries }) => {
   const handleSubmit = (event) => {
     dispatch(setCommentById(cardId, inputValue));
     setInputValue('');
+    alert(`Вы добавяете новый комментарий в карточку с id ${cardId}`);
   };
 
   const handleRemoveComment = (event) => {
     dispatch(removeCommentByName(cardId, event.target.dataset.value));
+    alert(`Вы удаляете комментарий из карточки с id ${cardId}`);
   };
 
   const handleInputChange = (value) => {

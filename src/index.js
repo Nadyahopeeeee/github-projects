@@ -9,24 +9,20 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { store } from './redux/store';
-
-import './index.css';
-import App from './components/App';
 import Home from './pages/Home';
+import App from './components/App';
+import { store } from './redux/store';
 import NotFound from './pages/NotFound';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path={'/'} element={<App />}>
-        <Route index element={<Navigate to={'/1'} />} />
-        <Route path="/:pageId" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </>,
+    <Route path={'/'} element={<App />}>
+      <Route index element={<Navigate to={'/1'} />} />
+      <Route path="/:pageId" element={<Home />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>,
   ),
 );
 

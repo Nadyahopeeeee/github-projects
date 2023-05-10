@@ -7,9 +7,8 @@ import eyeSvg from '../../assets/eye.svg';
 import starSvg from '../../assets/star.svg';
 import CommentBlock from './CommentBlock';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { removeProjectById } from '../../actions/githubActions';
-import selector from './../../pages/Home/selector';
 
 const CardBlock = (props) => {
   const dispatch = useDispatch();
@@ -22,7 +21,6 @@ const CardBlock = (props) => {
 
     if (question) {
       dispatch(removeProjectById(event.target.dataset.id));
-      alert('Пользователь удален!');
     } else {
       alert('Операция прервана');
     }
