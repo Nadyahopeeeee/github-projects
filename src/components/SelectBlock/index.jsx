@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 
-import style from './index.module.css';
 import { setItemsCount, setPageCounts } from '../../reducers/repositoriesReducer';
+import style from './index.module.css';
 
 const SelectBlock = () => {
   const dispatch = useDispatch();

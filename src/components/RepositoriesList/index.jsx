@@ -1,6 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import selector from '../../pages/Home/selector';
 
 import CardBlock from '../CardBlock';
 import style from './index.module.css';

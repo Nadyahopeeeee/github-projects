@@ -1,18 +1,9 @@
 import React from 'react';
 
+import styles from './index.module.css';
+
 const NotFound = () => {
-  return (
-    <h2
-      style={{
-        display: 'flex',
-        padding: '34px 0px 51px 0px',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      Такой страницы не существует :(
-    </h2>
-  );
+  return <h2 className={styles.title}>Такой страницы не существует :(</h2>;
 };
 
 export default NotFound;
