@@ -40,7 +40,6 @@ const Home = () => {
     // };
 
     if (isModalOpen) {
-      console.log(isModalOpen);
       dispatch(closeModal());
     } else {
       setCardId(event.target.dataset.id);

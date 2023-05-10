@@ -11,8 +11,6 @@ const PaginationBlock = ({ onChangePage }) => {
   const dispatch = useDispatch();
   const { pagesAmount, pageId } = useSelector(selector);
 
-  console.log(pagesAmount, pageId);
-
   const goToPage = (pageNumber) => {
     navigate(`/${pageNumber}`);
     dispatch(setCurrentPage(pageNumber));
@@ -30,6 +28,7 @@ const PaginationBlock = ({ onChangePage }) => {
         Array.from(Array(pagesAmount).keys()).map((currentPageId) => {
           return (
             <Pagination.Item
+              className={styles.item}
               active={currentPageId + 1 === pageId}
               key={currentPageId}
               onClick={() => goToPage(currentPageId + 1)}

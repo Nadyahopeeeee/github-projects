@@ -59,10 +59,3 @@ export const {
   setSelectedCard,
 } = repositoriesSlice.actions;
 export default repositoriesSlice.reducer;
-
-// [action.payload.id]: {
-//   ...state.gitHubData.items[action.payload.id],
-//   commentaries: {
-//     ...state.gitHubData.items[action.payload.id].commentaries,
-//     ...action.payload.inputValue
-//   }

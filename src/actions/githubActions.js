@@ -78,10 +78,14 @@ export const setCommentById = (id, inputValue) => {
 };
 
 export const removeCommentById = (id) => {
-  return async function (dispatch) {
+  return async function (dispatch, getState) {
     dispatch(setAppLoading(true));
+    const { gitHubData } = getState().repositories;
     try {
-      await dispatch(setCommentary({ id, inputValue: '' }));
+      const newComments = {
+        items: gitHubData.items.commentaries.filter((comment) => comment.id !== Number(id)),
+      };
+      await dispatch(setCommentary(newComments));
       await dispatch(setAppLoading(false));
     } catch (error) {
       console.error('We have a problem => ', error);

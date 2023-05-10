@@ -16,6 +16,10 @@ const CommentBlock = ({ cardId, commentaries }) => {
     setInputValue('');
   };
 
+  const handleRemoveComment = (id) => {
+    dispatch(removeCommentById(id));
+  };
+
   const handleInputChange = (value) => {
     setInputValue(value);
     if (!value) {
@@ -25,11 +29,20 @@ const CommentBlock = ({ cardId, commentaries }) => {
     }
   };
 
-  const removeComment = (index) => {
-    const newCommentaries = [...commentaries];
-    newCommentaries.splice(index, 1);
-    dispatch(removeCommentById(cardId, newCommentaries));
-  };
+  const commentariesList =
+    commentaries &&
+    commentaries.map((comment, i) => (
+      <li className={styles.comment} key={`${comment}_${i}`}>
+        {i + 1}. {comment}
+        <Button
+          variant="light"
+          className={styles.removeButton}
+          onClick={() => handleRemoveComment(i)}
+        >
+          x
+        </Button>
+      </li>
+    ));
 
   return (
     <div className={styles.wrapper}>
@@ -39,23 +52,19 @@ const CommentBlock = ({ cardId, commentaries }) => {
           isInvalid={hasError}
           onChange={(event) => handleInputChange(event.target.value)}
           placeholder="Комментарий к проекту"
-          className="form-control"
+          className={styles.input}
         />
-        <Button onClick={handleSubmit} variant="primary" type="button" value="Submit">
+        <Button
+          className={styles.searchButton}
+          onClick={handleSubmit}
+          variant="primary"
+          type="button"
+          value="Submit"
+        >
           <Image className={styles.icon} alt="pencil-icon" src={pencilSvg}></Image>
         </Button>
       </InputGroup>
-      <ul className={styles.list}>
-        {commentaries &&
-          commentaries.map((comment, i) => (
-            <li className={styles.comment} key={`${comment}_${i}`}>
-              {comment}
-              <button className={styles.removeButton} onClick={() => removeComment(i)}>
-                x
-              </button>
-            </li>
-          ))}
-      </ul>
+      <ul className={styles.list}>{commentariesList}</ul>
     </div>
   );
 };

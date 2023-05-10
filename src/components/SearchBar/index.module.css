@@ -4,12 +4,16 @@
   padding: 3px;
 }
 
-.form-control {
+.formControl {
   height: 62px;
+  /* border-radius: 0; */
 }
 
-.btn-search {
+/* .btnSearch {
   position: absolute;
   right: 0;
   z-index: 999;
-}
+  background-color: #00a3ff;
+  border-color: #00a3ff;
+  border-radius: 0;
+} */
