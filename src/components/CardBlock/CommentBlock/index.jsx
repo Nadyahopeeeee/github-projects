@@ -4,7 +4,7 @@ import { Form, InputGroup, Button, Image } from 'react-bootstrap';
 
 import styles from './index.module.css';
 import pencilSvg from '../../../assets/pencil.svg';
-import { setCommentById, removeCommentById } from '../../../actions/githubActions';
+import { setCommentById, removeCommentByName } from '../../../actions/githubActions';
 
 const CommentBlock = ({ cardId, commentaries }) => {
   const dispatch = useDispatch();
@@ -16,8 +16,8 @@ const CommentBlock = ({ cardId, commentaries }) => {
     setInputValue('');
   };
 
-  const handleRemoveComment = (id) => {
-    dispatch(removeCommentById(id));
+  const handleRemoveComment = (event) => {
+    dispatch(removeCommentByName(event.target.dataset.value));
   };
 
   const handleInputChange = (value) => {
@@ -32,12 +32,12 @@ const CommentBlock = ({ cardId, commentaries }) => {
   const commentariesList =
     commentaries &&
     commentaries.map((comment, i) => (
-      <li className={styles.comment} key={`${comment}_${i}`}>
+      <li data-value={comment} className={styles.comment} key={i}>
         {i + 1}. {comment}
         <Button
           variant="light"
           className={styles.removeButton}
-          onClick={() => handleRemoveComment(i)}
+          onClick={(event) => handleRemoveComment(event)}
         >
           x
         </Button>

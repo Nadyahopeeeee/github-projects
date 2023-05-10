@@ -3,6 +3,7 @@ import {
   setAppLoading,
   setPageCounts,
   setCommentary,
+  removeCommentary,
 } from '../reducers/repositoriesReducer';
 
 const FETCH_REPOSITORIES_URL = 'https://api.github.com/search/repositories';
@@ -77,15 +78,16 @@ export const setCommentById = (id, inputValue) => {
   };
 };
 
-export const removeCommentById = (id) => {
+export const removeCommentByName = (id, str) => {
   return async function (dispatch, getState) {
     dispatch(setAppLoading(true));
     const { gitHubData } = getState().repositories;
     try {
-      const newComments = {
-        items: gitHubData.items.commentaries.filter((comment) => comment.id !== Number(id)),
-      };
-      await dispatch(setCommentary(newComments));
+      // const newComments = {
+      //   items: gitHubData.items.commentaries.filter((comment) => comment !== String(str)),
+      // };
+
+      await dispatch(removeCommentary({ id, str }));
       await dispatch(setAppLoading(false));
     } catch (error) {
       console.error('We have a problem => ', error);

@@ -14,7 +14,7 @@ import selector from './../../pages/Home/selector';
 const CardBlock = (props) => {
   const dispatch = useDispatch();
   const { stargazers_count, watchers, owner, name, id, commentaries } = props.data;
-  const { handleOpenModal, isModalOpen } = props;
+  const { handleToggleModal, isModalOpen } = props;
   const url = `https://github.com/orgs/${owner.login}`;
 
   const handleRemove = (event) => {
@@ -62,7 +62,7 @@ const CardBlock = (props) => {
               </div>
             </div>
             <CommentBlock cardId={id} commentaries={commentaries}></CommentBlock>
-            <Button variant="secondary" data-id={id} onClick={handleOpenModal}>
+            <Button variant="secondary" data-id={id} onClick={handleToggleModal}>
               {isModalOpen ? 'закрыть' : 'открыть'}
             </Button>
           </Card.Body>

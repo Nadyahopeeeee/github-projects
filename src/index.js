@@ -12,9 +12,9 @@ import {
 import { store } from './redux/store';
 
 import './index.css';
-import App from './App';
+import App from './components/App';
 import Home from './pages/Home';
-import NotFound from './pages/NotFound/NotFound';
+import NotFound from './pages/NotFound';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

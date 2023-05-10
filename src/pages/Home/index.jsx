@@ -12,7 +12,7 @@ import LoaderBlock from '../../components/LoaderBlock';
 import ButtomContent from '../../components/ButtomContent';
 import RepositoriesList from '../../components/RepositoriesList';
 import { initializeApp } from '../../actions/githubActions';
-import { openModal, closeModal } from '../../reducers/modalReducer';
+import { toggleModal } from '../../reducers/modalReducer';
 import { setCurrentPage, setPageCounts } from '../../reducers/repositoriesReducer';
 
 const Home = () => {
@@ -34,31 +34,20 @@ const Home = () => {
     dispatch(setPageCounts());
   }, []);
 
-  const handleOpenModal = (event) => {
-    //   setCardId(event.target.dataset.id);
-    //   dispatch(openModal());
-    // };
-
-    if (isModalOpen) {
-      dispatch(closeModal());
-    } else {
-      setCardId(event.target.dataset.id);
-      dispatch(openModal());
-    }
-
-    // if (!isModalOpen || cardId !== event.target.dataset.id) {
-    //   setCardId(event.target.dataset.id);
-    //   dispatch(openModal());
-    // } else {
-    //   dispatch(closeModal());
-    // }
+  const handleToggleModal = (event) => {
+    setCardId(event.target.dataset.id);
+    dispatch(toggleModal());
   };
 
   return (
     <>
       {cardData && isModalOpen && (
         <ModalBlock>
-          <CardBlock data={cardData} isModalOpen={isModalOpen} />
+          <CardBlock
+            data={cardData}
+            isModalOpen={isModalOpen}
+            handleToggleModal={handleToggleModal}
+          />
         </ModalBlock>
       )}
       <Header />
@@ -70,7 +59,7 @@ const Home = () => {
             {isLoading ? (
               <LoaderBlock />
             ) : (
-              <RepositoriesList handleOpenModal={handleOpenModal} filteredList={repositories} />
+              <RepositoriesList handleToggleModal={handleToggleModal} filteredList={repositories} />
             )}
             <ButtomContent />
           </>

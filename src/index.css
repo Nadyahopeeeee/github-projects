@@ -9,15 +9,3 @@
   line-height: 16px;
   color: #000000;
 }
-
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  opacity: 0.7;
-}
-
-input {
-  box-shadow: none !important;
-}

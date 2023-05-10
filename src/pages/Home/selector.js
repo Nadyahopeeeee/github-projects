@@ -1,8 +1,4 @@
 import { createSelector } from '@reduxjs/toolkit';
-// функция createSelector является частью библиотеки reselect.
-// Она создает мемоизированную селектор-функцию, которая использует кэш,
-// чтобы данные не пересчитывались каждый раз, когда вызывается селектор.
-// Это повышает производительность приложения, когда состояние Redux изменяется.
 
 const selectGitHubData = (state) => state.repositories.gitHubData;
 const selectIsLoading = (state) => state.repositories.appLoading;

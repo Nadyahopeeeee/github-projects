@@ -37,6 +37,29 @@ export const repositoriesSlice = createSlice({
         ],
       };
     },
+    removeCommentary: (state, action) => {
+      state.gitHubData = {
+        ...state.gitHubData,
+        items: [
+          ...state.gitHubData.items.reduce((acc, card) => {
+            if (card.id === action.payload.id) {
+              const filteredCommentaries = card.commentaries.filter(
+                (commentary) => commentary !== action.payload.commentary,
+              );
+              card = {
+                ...card,
+                commentaries: filteredCommentaries,
+              };
+
+              acc.push(card);
+            } else {
+              acc.push(card);
+            }
+            return acc;
+          }, []),
+        ],
+      };
+    },
     setItemsCount: (state, action) => {
       state.itemsCount = action.payload;
     },
@@ -57,5 +80,6 @@ export const {
   setPageCounts,
   setCommentary,
   setSelectedCard,
+  removeCommentary,
 } = repositoriesSlice.actions;
 export default repositoriesSlice.reducer;
