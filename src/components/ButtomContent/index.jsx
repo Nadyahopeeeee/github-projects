@@ -9,7 +9,7 @@ const ButtomContent = () => {
     <div className={styles.wrapper}>
       <SelectBlock />
       <PaginationBlock />
-      <div></div>
+      <div />
     </div>
   );
 };

@@ -5,7 +5,6 @@ import selector from './selector';
 
 import styles from './index.module.css';
 import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import CardBlock from '../../components/CardBlock';
 import ModalBlock from '../../components/ModalBlock';
 import LoaderBlock from '../../components/LoaderBlock';
@@ -65,7 +64,7 @@ const Home = () => {
           </>
         )}
       </main>
-      <Footer />
+      <footer />
     </>
   );
 };

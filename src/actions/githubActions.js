@@ -79,14 +79,9 @@ export const setCommentById = (id, inputValue) => {
 };
 
 export const removeCommentByName = (id, str) => {
-  return async function (dispatch, getState) {
+  return async function (dispatch) {
     dispatch(setAppLoading(true));
-    const { gitHubData } = getState().repositories;
     try {
-      // const newComments = {
-      //   items: gitHubData.items.commentaries.filter((comment) => comment !== String(str)),
-      // };
-
       await dispatch(removeCommentary({ id, str }));
       await dispatch(setAppLoading(false));
     } catch (error) {
